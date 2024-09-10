@@ -11,8 +11,8 @@ pipeline {
             steps {
                 // Create a directory and pull the latest code
                 script {
-                    bat 'mkdir C:\\Users\\ASA960\\Documents\\code'
-                    bat 'xcopy * C:\\Users\\ASA960\\Documents\\code /s /e /y'
+                    bat 'mkdir \\home\\ec2-user\\dest'
+                    bat 'xcopy * \\home\\ec2-user\\dest /s /e /y'
                 }
             }
         }
