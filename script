@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+    stages {
+        stage('Test') {
+            when {
+                branch 'develop'
+            }
+            steps {
+                script {
+                    // Checkout the code from Git
+                    checkout scm
+
+                    // Copy files to test node
+                    sh 'scp -r . user@test-node:/path/to/test'
+                }
+            }
+            post {
+                success {
+                    // Trigger production job if test is successful
+                    build job: 'ProdJob'
+                }
+            }
+        }
+    }
+}
